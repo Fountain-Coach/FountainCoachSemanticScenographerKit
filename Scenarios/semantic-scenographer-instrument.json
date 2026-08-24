@@ -1,0 +1,38 @@
+{
+  "scenarioVersion": 2,
+  "id": "fountaincoach.semantic-scenographer@0.1.0",
+  "kind": "instrument-creation",
+  "command": "/instrument create",
+  "capability": "fountaincoach.semantic-scenographer@0.1.0",
+  "status": "candidate",
+  "purpose": "Turn source-addressed semantic relations into a structured Teatro spatial proposition with deterministic SVG rendering.",
+  "promptContract": {
+    "id": "fountaincoach.semantic-scenographer@0.1.0",
+    "kind": "instrument-creation",
+    "command": "reframe/capability.invoke",
+    "capability": "fountaincoach.semantic-scenographer@0.1.0",
+    "purpose": "Create a candidate Semantic Scenographer FCIS-KIT contract.",
+    "journey": "candidate → requested → accepted → running → succeeded",
+    "actors": ["Reframe host", "FCIS-KIT instrument", "Teatro renderer", "FountainStore", "AX", "MIDI2"],
+    "sourceIdentity": "Exact Markdown/.fountain source document and range",
+    "sourcePassages": ["bounded source passage"],
+    "semanticProducts": ["structured Teatro score", "deterministic SVG digest", "source-addressed object identities"],
+    "downstreamConsumers": ["Reframe", "FountainStore", "AX", "MIDI2"],
+    "transformations": ["admitted semantic addresses → Teatro objects → deterministic SVG"],
+    "placementRelations": ["Source View → scenographic proposal", "UncertaintyScoreKit → input state", "Teatro → SVG"],
+    "operation": "reframe/capability.invoke",
+    "lifecycle": ["candidate", "requested", "accepted", "running", "succeeded", "cancelled", "refused", "timed_out", "replayed", "failed", "rolled_back"],
+    "terminalPredicates": ["exact source range resolved", "score objects preserve addresses", "SVG digest deterministic", "correlated lifecycle terminal event", "receipt persisted"],
+    "evidence": ["AX", "MIDI2 trace", "FountainStore receipt", "scenario", "CoreGraphics window ID", "telemetry"],
+    "failureOutcomes": ["cancelled", "refused", "timed_out", "invalid_input", "replayed", "failed", "rolled_back", "missing semantic input"],
+    "claimBoundary": "candidate implementation only; no admission, release, publication, provider, security, hardware, or production claim",
+    "ownership": "Reframe host mediation; FCIS-KIT contract and lifecycle; FountainStore durable receipt authority; Teatro renderer"
+  },
+  "store": {"intent": "fresh", "corpus": "semantic-scenographer-fixture"},
+  "launch": {"storeIntent": "explicit", "corpus": "semantic-scenographer-fixture", "scene": "semantic-scenographer-fixture"},
+  "steps": [
+    {"id": "execute-candidate", "driver": {"action": "invoke", "operation": "reframe/capability.invoke", "request": {"capability": "fountaincoach.semantic-scenographer@0.1.0"}}, "terminal": {"driver": "The typed kit returns a structured Teatro score and deterministic SVG digest.", "store": "FountainStore stores the correlated candidate receipt."}}
+  ],
+  "evidence": {"windowCapture": "required", "axTranscript": "required", "storeReadback": "required", "midi2Trace": "required", "bind": ["pid", "windowId", "managedStore", "executable", "sourceCommit"]},
+  "claimBoundary": "candidate implementation only"
+}
