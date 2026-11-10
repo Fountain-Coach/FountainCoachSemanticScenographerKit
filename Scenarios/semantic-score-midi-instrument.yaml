@@ -1,0 +1,58 @@
+scenarioVersion: 2
+id: semantic-score-midi-instrument
+name: Preserve a source-addressed dramatic score through typed MIDI2 transport
+kind: capability
+status: candidate
+instrument: fountaincoach.semantic-score-midi@0.1.0
+owner: Fountain-Coach/FountainCoachSemanticScenographerKit
+source: synthetic source-addressed score fixture; original 15-page work is private and not bundled
+claimBoundary: reusable kit projection only; not an admitted Reframe scenario, released instrument, or hardware MIDI2
+purpose: Maintain all authored stage, lighting, sound, voice and source-passage relationships while emitting existing local MIDI2 UMP only for explicitly proposed sonification.
+operations:
+  semanticSourceIndex: fountainstore/document.put
+  sonificationEvent: stage/midi.events.put
+  transport: MIDI2 64-bit UMP control-change, existing backplane vocabulary
+  sourceNamespace: fountaincoach.semantic-score-midi.v1
+preconditions:
+  - known source identity and SHA-256 are supplied by host
+  - original source text remains under Press or host Store authority
+  - source passage order and unique cue identities are complete and stable
+  - host selects corpus and scene; kit never chooses Store, network, peer or credentials
+  - no emission claims live hardware or automatic timing
+actors:
+  kit: validates and projects source-only semantic index and optional sonic MIDI CC events
+  host: selects source, Store, permission and the existing IDL instrument operation
+  fountainStoreInstrument: handles stage/midi.events.put and fountainstore/document.put
+  monitor: Reframe Swift MIDI2 Monitor owns actual observed transport lifecycle; not this kit
+  source: Fountain Press retains document authorship and source addresses
+steps:
+  - id: admit-source
+    action: decode source-addressed projection and confirm source identity/version/digest
+    terminal: all original event identities and cue links accounted for; private text excluded from output
+  - id: project-semantic-store
+    action: produce deterministic bounded native document-put request candidates
+    terminal: every source-only event indexed, repeat projection creates identical IDs and chunk hashes
+  - id: project-midi-controls
+    action: produce existing stage/midi.events.put request candidates from mapped SD cues only
+    terminal: each musical transport packet has exactly two valid 32-bit UMP words, original cue/source identity, and no inferred note, tempo or timing
+  - id: validate-refusal
+    action: reject duplicate, stale, malformed, mixed-origin or out-of-range source/mapping inputs
+    terminal: refused before effects or partial artifact promotion
+  - id: validate-replay
+    action: reproject identical admitted input
+    terminal: exact same document identifiers, payload digests, UMP words and semantic order
+  - id: cancel-before-host
+    action: host may discard candidate requests without sending
+    terminal: no Store, MIDI2, Csound or hardware effects caused by kit creation
+terminalPredicates:
+  positive: source event count, 32 cue identities in original scenario, 29 cue passages, 16 optional sonification packet proposals, deterministic typed request boundaries
+  negative: source revision mismatch, invalid digest, cue duplication, unknown controller, LX-only cue sonification, nonfinite mapping, invented timing, oversized request, replay drift
+  evidence: Swift unit tests, original score private fixture QA, artifact hashes, exact IDL topic strings
+  notEstablished: Reframe runtime invocation, Swift Monitor peer discovery, FountainStore terminal receipt, AX/window evidence, FCIS-KIT release, MIDI-CI, physical MIDI2
+hostAcceptanceRequired:
+  - released kit artifact pinned by version and digest
+  - Reframe scenario YAML plus checked JSON projection under LiveScenarios
+  - source authority admitted in managed FountainStore
+  - host invokes IDL topics using current transport and managed Store
+  - same-run Swift Monitor, Store, AX and independent window-ID evidence
+publication: none
